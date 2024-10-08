@@ -1,20 +1,63 @@
 import express from 'express';
+import Product from '../models/Product.js'
 const router = express.Router();
 
-router.get('/', (req,res)=>{
-  res.send('Get all items');
+//Get all products
+router.get('/', async  (req,res)=>{
+  try{
+    const products = await Product.find();
+    res.status(200).json(products);
+  } catch (error){
+    res.status(500).json({message: 'Server error', error})
+  }
 });
 
-router.post('/',(req,res)=>{
-  res.send('Create new item');
+
+//Create a new product
+router.post('/', async (req, res)=>{
+  const {name, price, description, category, stock, images} = req. body;
+  try{
+const newProduct = new Product({
+  name, price, description, category, stock, images,
+});
+const savedProduct = await newProduct.save();
+res.status(201).json(savedProduct);
+  }catch(error){
+res.status(400).json({message: 'Error creating product', error});
+  }
+});
+
+router.patch('/', async (req, res)=>{
+ const {id} = req.params;
+ const updates = req.body;
+
+ try{
+const updatedProduct = await Product.findByIdAndUpdate(id, updates,{
+  new: true,
+});
+
+if (!updatedProduct){
+  return res.status(404).json({message: 'Product not found'});
+}
+res.status(200).json(updatedProduct);
+ }catch(error){
+res.status(400).json({message: 'Error update'})
+ }
 })
 
-router.patch('/',(req,res)=>{
-  res.send('Put new item');
-})
+router.delete('/',async (req,res)=>{
+const {id} = req.params;
 
-router.delete('/',(req,res)=>{
-  res.send('Delete an item');
+try{
+const deletedProduct = await Product.findByIdAndDelete(id);
+
+if (!deletedProduct){
+  return res.status(404).json({message: 'Product not found'});
+}
+res.status(200).json({message: 'Product deleted', deletedProduct});
+}catch (error){
+res.status(500).json({message: 'Error deleting product', error});
+}
 })
 
 export default router;
