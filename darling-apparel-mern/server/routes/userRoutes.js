@@ -66,7 +66,16 @@ res.status(500).json({message: 'server error'});
 });
 
 router.delete('/remove', async (req,res)=>{
-  res.send('Delete user');
-})
+const {userId} = req.body;
+try{
+const deletedUser = await User.findByIdAndDelete(userId)
+if (!deletedUser){
+  return res.status(404).json({message: 'User not found'});
+}
+res.json({message: 'user deleted successful'});
+}catch(error){
+res.status(500).json({message: 'server error'})
+}
+});
 
 export default router;
