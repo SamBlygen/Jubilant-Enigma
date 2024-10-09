@@ -46,8 +46,24 @@ router.post('/login',async  (req,res)=>{
 });
 
 router.patch ('/update', async (req, res)=>{
-  res.send('User update');
-})
+ const {userId, name, email, password} = req.body;
+
+ try{
+const updatedUser = await User.findById(userId);
+if (!updatedUser){
+  return res.status(404).json({message:'User not found'});
+}
+
+if (name) updatedUser.name = name;
+if (email) updatedUser.email = email;
+if (password) updatedUser.password = await bcrypt.hash(password, 10);
+
+await updatedUser.save();
+res.json({message: 'user updated successful', user: updatedUser});
+ }catch (error){
+res.status(500).json({message: 'server error'});
+ }
+});
 
 router.delete('/remove', async (req,res)=>{
   res.send('Delete user');
