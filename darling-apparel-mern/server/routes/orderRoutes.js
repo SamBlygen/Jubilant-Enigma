@@ -2,12 +2,37 @@ import express from 'express';
 import Order from '../models/Order.js';
 const router = express.Router();
 
-router.get('/', (req, res)=>{
-  res.send('Get all orders');
+router.get('/',async (req, res)=>{
+  try{
+const orders = await Order.find();
+res.json(orders);
+  }catch(error){
+res.status(500).json({message:'Server error'})
+  }
 });
 
-router.post('/', (req,res)=>{
-  res.send('Create new order');
+router.post('/', async(req,res)=>{
+ const {user, orderItems, shippingAddress, paymentMethod, shippingPrice, totalPrice } = req.body;
+
+ try{
+  const newOrder = new Order({
+    user, 
+    orderItems,
+    shippingAddress,
+    paymentMethod,
+    shippingPrice,
+    totalPrice,
+   
+
+  });
+
+  const savedOrder = await newOrder.save();
+  
+
+
+ }catch (error){
+
+ }
 })
 
 router.patch ('/:id', (req, res)=>{
