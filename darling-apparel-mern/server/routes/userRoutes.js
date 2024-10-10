@@ -2,7 +2,9 @@ import express from 'express'
 import User from '../models/User.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken';
+import { registerUser, loginUser, updateUser,deletedUser } from '../controllers/userController.js';
 const router = express.Router();
+
 
 router.post('/register', async (req, res)=>{
  const {name, email, password} = req.body;
@@ -78,4 +80,10 @@ res.status(500).json({message: 'server error'})
 }
 });
 
+
+
+router.post('/register', registerUser);
+router.post('/login', loginUser);
+router.patch('/update', updateUser);
+router.delete('/remove',deletedUser)
 export default router;
