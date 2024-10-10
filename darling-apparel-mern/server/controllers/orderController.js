@@ -45,4 +45,19 @@ res.status(500).json({message : 'server error'})
   }
 };
 
-Delete order
+//Delete order
+
+export const deleteOrder = async (req, res)=>{
+  const {id} = req.params;
+
+  try{
+    const deletedOrder = await Order.findByIdAndDelete(id);
+    if (!deleteOrder){
+      return res.status(404).json({message: 'order not found'});
+    }
+    res.json ({message : 'Order deleted successfully'});
+  }catch (error){
+    res.status(500).json({message: 'server error'});
+  }
+
+};
