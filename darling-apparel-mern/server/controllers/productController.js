@@ -26,3 +26,16 @@ res.status(500).json({message: 'server error'})
 }
 
 //create a new product
+export const createProduct = async (req, res)=>{
+  const {name, description, price, category, stock, imageUrl}= req.body;
+  try{
+const newProduct = new Product ({
+  name, description, price, category, stock, imageUrl
+});
+
+await newProduct.save();
+res.status(201).json({message: 'Product successfully created', product: newProduct})
+  }catch (error){
+res.status(500).json({message:'server error creating product'})
+  }
+}
