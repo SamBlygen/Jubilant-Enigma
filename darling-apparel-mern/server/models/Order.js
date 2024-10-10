@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import {getOrders, createOrder,updateOrder, deleteOrder} from '../controllers/orderController.js'
+import router from '../routes/productRoutes.js';
 
 const orderItemSchema = mongoose.Schema(
   {
@@ -59,4 +61,8 @@ const orderSchema = mongoose.Schema(
 
 const Order = mongoose.model('Order', orderSchema);
 
+router.get ('/', getOrders);
+router.post('/', createOrder);
+router.patch('/:id', updateOrder);
+router.delete('/:id', deleteOrder);
 export default Order;
