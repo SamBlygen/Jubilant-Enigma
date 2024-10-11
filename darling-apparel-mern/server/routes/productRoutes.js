@@ -1,5 +1,6 @@
 import express from 'express';
 import Product from '../models/Product.js'
+import { deleteProduct, getProductById } from '../controllers/productController.js';
 const router = express.Router();
 
 //Get all products
@@ -59,5 +60,11 @@ res.status(200).json({message: 'Product deleted', deletedProduct});
 res.status(500).json({message: 'Error deleting product', error});
 }
 })
+
+router.get('/', getProducts);
+router.get('/:id', getProductById);
+router.post('/'. createProduct);
+router.patch('/:id', updateProduct);
+router.delete('/:id', deleteProduct);
 
 export default router;
