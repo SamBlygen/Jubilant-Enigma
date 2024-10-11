@@ -1,7 +1,7 @@
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { useReducer } from 'react';
+
 
 // register user
 export const registerUser = async (req, res) =>{
@@ -32,7 +32,7 @@ const user = await User.findOne({email});
 if (!user){
   return res.status(400).json({message: 'Invalid credentials'})
 }
-const token = jwt.sign({id: user._id}, process.env.JWT_LOCKED,{expiresIn: '1hr'})
+const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{expiresIn: '1h'})
 res.json({token, userId: user._id});
   }catch(error) {
 res.status(500).json({message: 'server error'})
