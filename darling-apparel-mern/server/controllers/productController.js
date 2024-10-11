@@ -38,4 +38,28 @@ res.status(201).json({message: 'Product successfully created', product: newProdu
   }catch (error){
 res.status(500).json({message:'server error creating product'})
   }
+};
+
+//Update an existing product
+export const updatedProduct = async (req, res)=>{
+  const {id } = req.params;
+  const {name, description, price, category, stock, imageUrl} = req.body;
+
+  try{
+const product = await Product.findById(id);
+if (!product){
+  return res.status(404).json({message: 'Product not found'});
 }
+product.name = name || product.name;
+product.description = description || product.description;
+product.price = price || product.price;
+product.category = category || product.category;
+product.stock = stock || product.stock;
+product.imageUrl = imageUrl || product.imageUrl;
+
+await product.save();
+res.json({message: 'Product updated', product})
+  }catch(error){
+res.status(500).json({message: 'server error'}); 
+  }
+};

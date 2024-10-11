@@ -1,5 +1,6 @@
 import express from 'express';
 import Order from '../models/Order.js';
+import { updatedOrder } from '../controllers/orderController.js';
 const router = express.Router();
 
 router.get('/',async (req, res)=>{
@@ -61,5 +62,10 @@ res.json({message: 'order deleted successfully'})
 res.status(500).json({message: 'server error'})
   }
 })
+
+router.get('/', getOrders);
+router.post('/', createOrder);
+router.patch('/:id', updatedOrder);
+router.delete('/:id', deleteOrder);
 
 export default router;
