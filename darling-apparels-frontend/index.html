@@ -4,31 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Darling Apparels</title>
+    <title>Darling Apparel</title>
+    <link rel="stylesheet" href="/darling-apparels-frontend/src/App.css">
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+   
 
-    <div id ="User">
-      <h1>User Authentication</h1>
+ <header>
+  <nav id="navbar"></nav> 
+ </header>
 
-      <h2> Register</h2>
-      <form id=" registerForm">
-        <input type ="text" id = "registerName" placeholder="Name" required>
-        <input type="email" id="registerEmail" placeholder="Email" required>
-            <input type="password" id="registerPassword" placeholder="Password" required>
-            <button type="submit">Register</button>
-        </form>
-
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="email" id="loginEmail" placeholder="Email" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-      </form>
-    </div>
+ <main>
+  <section id="shop-section"></section>
+  <section id="register-section"></section>
+  <section id="login-section"></section>
+ </main> 
+ <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
