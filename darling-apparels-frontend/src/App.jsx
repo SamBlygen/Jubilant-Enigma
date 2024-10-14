@@ -1,7 +1,7 @@
-import Navbar from '../components/Navbar.js';
-import ShopPage from '../components/ShopPage.js';
-import RegisterForm from '../components/RegistrationForm.js';
-import LoginForm from '../components/LoginPage.js';
+import Navbar from '../components/Navbar.jsx';
+import ShopPage from '../components/ShopPage.jsx';
+import RegisterForm from '../components/RegistrationForm.jsx';
+import LoginForm from '../components/LoginPage.jsx';
 import './App.css'
 
 function App() {
