@@ -1,35 +1,36 @@
-export default function RegisterForm(){
+export default function LoginForm(){
   const form = document.createElement('form');
-  form.id = 'registerForm';
+  form.id ='loginForm';
 
   form.innerHTML =`
-  <h2> Create an Account</h2>
-  <input type ="text" id="registerName" placeholder= "Name" required>
-  <input type ="email" id="registerEmail" placeholder= "Email" required>
-  <input type ="password" id="registerPassword" placeholder= "Password" required>
-  <button type ="submit">Register</button>
-  
+  <h2>Login</h2>
+  <input type= "email" id="loginEmail" placeholder="Email" required>
+  <input type= "password" id="loginPassword" placeholder="Password" required>
+  button type="submit">Login</button>
+
   `;
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById('loginPassword').value;
 
-try{
-  const response = await fetch('http://localhost:5000/api/users/register',{
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({name, email, password}),
-  });
-  const data = await response.json();
-  alert(data.message || 'Registration failed');
+    try{
+const response =await fetch('http://localhost:5000/api/users/login',{
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({email, password}),
+});
+const data = await response.json();
+if (response.ok){
+  alert('Login successful');
 
-}catch(error) {
-alert('Error registering:' + error.message)
+}else{
+  alert(data.message || 'Login failed')
 }
-
+    }catch(error){
+alert('Error loggin in: ' + error.message)
+    }
   })
   return form;
 }
