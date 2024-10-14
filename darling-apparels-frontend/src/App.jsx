@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Navbar from '../components/Navbar.js';
+import ShopPage from '../components/ShopPage.js';
+import RegisterForm from '../components/RegistrationForm.js';
+import LoginForm from '../components/LoginPage.js';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div id='navbar'>
+        <Navbar/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div id='register-section'>
+        <RegisterForm/>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     
+     <div id='login-section'>
+<LoginForm/>
+     </div>
+     
+     <div>
+      <ShopPage/>
+     </div>
     </>
   )
 }
 
-export default App
+export default App;
