@@ -3,11 +3,10 @@ export default function ProductCard(product){
   card.className = 'product-card';
 
   card.innerHTML =`
-  "<img src =${product.imageUrl}" alt=${product.name}>
-  <h3> ${product.name}</h3>
-  <p>Price: ${product.price}</p>
-  <button>Add to Cart</button>
-
-  `;
+        <img src="${product.imageUrl}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>Price: $${product.price}</p>
+        <button>Add to Cart</button>
+    `;
   return card;
 }

@@ -3,13 +3,12 @@ export default function RegisterForm(){
   form.id = 'registerForm';
 
   form.innerHTML =`
-  <h2> Create an Account</h2>
-  <input type ="text" id="registerName" placeholder= "Name" required>
-  <input type ="email" id="registerEmail" placeholder= "Email" required>
-  <input type ="password" id="registerPassword" placeholder= "Password" required>
-  <button type ="submit">Register</button>
-  
-  `;
+        <h2>Create an Account</h2>
+        <input type="text" id="registerName" placeholder="Name" required>
+        <input type="email" id="registerEmail" placeholder="Email" required>
+        <input type="password" id="registerPassword" placeholder="Password" required>
+        <button type="submit">Register</button>
+    `;
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
