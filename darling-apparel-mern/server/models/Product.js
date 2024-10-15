@@ -14,10 +14,7 @@ required:true,
     type: String,
     required: true,
   },
-  category:{
-type: String,
-required: true, 
-  },
+
 stock:{
   type: Number,
 default: 0,
@@ -27,10 +24,7 @@ images:[{
   type: String,
 },
 ],
-createdAt:{
-  type: Date,
-  default: Date.now,
-},
+
 });
 
 const Product = mongoose.model('Product', productSchema);
