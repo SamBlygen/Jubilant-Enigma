@@ -8,11 +8,11 @@ body {
 
 /* Header Styles */
 header {
-  background-color: #ff6f61; 
+  background-color: linear-gradient(to bottom right, #ff7f50, #ff69b4); 
   color: white;
   padding: 20px;
   text-align: center;
-  border-bottom: 5px solid #ff4c4c; 
+  border-bottom: 5px solid linear-gradient(to bottom right, #ff7f50, #ff69b4); 
 }
 
 h1 {
@@ -22,7 +22,7 @@ h1 {
 
 /* Navbar Styles */
 nav {
-  background-color: #ff6f61; /* Same as header */
+  background-color:#ff6f61; /* Same as header */
   padding: 10px;
 }
 
@@ -44,7 +44,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #ff4c4c; /* Darker coral on hover */
+  color: linear-gradient(to bottom right, #ff7f50, #ff69b4); /* Darker coral on hover */
 }
 
 /* Product Card Styles */
@@ -126,14 +126,31 @@ footer {
 }
 
 .nice-animate {
-  font-family: 'Comic Sans MS', cursive, sans-serif; 
-    font-size: 3.5em;
-    color: #ff6f61; 
-    text-align: center; 
-    margin: 20px 0; 
-    background: linear-gradient(90deg, #ff61f7, #ff4cd2); 
-    -webkit-text-fill-color: transparent; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 3.5em;
+  color: #ff6f61; 
+  text-align: center; 
+  margin: 20px 0; 
+  background: linear-gradient(to bottom right, #ff7f50, #ff69b4); 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text; 
+  animation: textAnimation 3s ease-in-out infinite; 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+@keyframes textAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
 }
 
 .prod-title{
@@ -143,32 +160,88 @@ footer {
     text-align: center; 
 }
 .carousel {
-  width: 100%; /* Ensure carousel takes full width */
+  width: 100%;
 }
 
 .carousel-item {
-  height: 600px; /* Increase height for better visibility of images */
+  height: 600px; 
 }
 
 .carousel-item img {
-  object-fit: contain; /* Maintain aspect ratio, filling the entire area */
-  width: 100%; /* Full width of the carousel */
-  height: 100%; /* Full height of the carousel item */
+  object-fit: contain; 
+  width: 100%; 
+  height: 100%; 
 }
 
-/* Optional: Adjust the caption height */
-.carousel-caption {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
-  padding: 20px; /* Add some padding */
-  border-radius: 10px; /* Rounded corners */
+.background-container {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  background: linear-gradient(to bottom right, #ff7f50, #ff69b4); /* Gradient background */
+  overflow: hidden; /* Hide overflow for animations */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.carousel-caption h3 {
-  font-size: 2rem; /* Increase font size of the title */
-  color: #fff; /* White color for the title */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5); 
+  animation: fadeIn 2s ease-in-out;
 }
 
-.carousel-caption p {
-  font-size: 1.2rem; /* Increase font size of the description */
-  color: #ddd; /* Light gray color for the description */
+.background-content {
+  position: relative;
+  z-index: 1; 
+  color: #fff;
 }
+
+h1 {
+  font-size: 3rem; /* Large title */
+  margin: 0;
+}
+
+p {
+  font-size: 1.5rem; 
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.background-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background-image: url('https://img.freepik.com/premium-photo/surrealist-beach-collage-design_23-2151729738.jpg?ga=GA1.1.552237862.1729053835'), url('https://img.freepik.com/free-photo/glamorous-fashion-weeks-collage_23-2149324304.jpg?t=st=1729055139~exp=1729058739~hmac=cb977f952d031e202da565afe93ec3b7a91309b78432caacf8d39a3c39cc30c0&w=740'); 
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  transform: translate(-50%, -50%);
+  animation: moveBackground 10s linear infinite; 
+}
+
+/* Animation for background movement */
+@keyframes moveBackground {
+  /* 0% {
+    background-position: 0% 0%;
+  } */
+  100% {
+    background-position: 100% 100%;
+  }
+}
+

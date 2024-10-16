@@ -7,6 +7,7 @@ import RegisterForm from '../components/RegistrationForm.jsx';
 import LoginForm from '../components/LoginPage.jsx';
 import CartPage from '../components/CartPage.jsx';
 import Carousel from '../components/Carousel.jsx';
+import Background from '../components/Background.jsx';
 import './App.css';
 
 
@@ -48,6 +49,7 @@ function App() {
       <div id='navbar'>
         <Navbar cartCount={cartItems.length} /> 
       </div>
+      <div><Background /></div>
       <div className="carousel-container">
         <Carousel items={carouselItems} /> 
       </div>

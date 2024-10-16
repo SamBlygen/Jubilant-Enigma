@@ -1,13 +1,11 @@
-// src/components/Carousel.jsx
-
 import React, { useState } from 'react';
-import { Carousel as BootstrapCarousel } from 'react-bootstrap'; // Assuming you're using react-bootstrap for your carousel
+import { Carousel as BootstrapCarousel } from 'react-bootstrap'; 
 
 const Carousel = ({ items }) => {
-  // State to manage the active index of the carousel
+
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Handler to control the carousel's active index
+  
   const handleSelect = (selectedIndex, e) => {
     setActiveIndex(selectedIndex);
   };
