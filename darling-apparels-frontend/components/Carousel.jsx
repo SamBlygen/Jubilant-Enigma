@@ -14,6 +14,7 @@ const Carousel = ({ items }) => {
     <BootstrapCarousel activeIndex={activeIndex} onSelect={handleSelect}>
       {items.map((item, index) => (
         <BootstrapCarousel.Item key={index}>
+          
           <img
             className="d-block w-100"
             src={item.image}

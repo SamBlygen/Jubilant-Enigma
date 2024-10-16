@@ -35,11 +35,7 @@ const ShopPage = ({ addToCart }) => {
 
   return (
     <div className="shop-page">
-      <h1 className='prod-title'>Trending</h1>
-      <blockquote className="quote">
-        <p>“Fashion is the armour to survive the reality of everyday life.”</p>
-        <cite>- bill cunningham</cite>
-      </blockquote>
+      
       <div className="product-list">
         {products.length > 0 ? (
           products.map((product) => (

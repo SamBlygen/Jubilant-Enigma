@@ -8,13 +8,11 @@ import LoginForm from '../components/LoginPage.jsx';
 import CartPage from '../components/CartPage.jsx';
 import Carousel from '../components/Carousel.jsx';
 import Background from '../components/Background.jsx';
+import CarouselLayout from '../components/CarouselLayout.jsx';
 import './App.css';
 
-
-
-
 function App() {
-  const [cartItems, setCartItems] = useState([]); // Store cart items
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cartItems'));
@@ -25,8 +23,8 @@ function App() {
 
   const addToCart = (product) => {
     const existingItem = cartItems.find(item => item._id === product._id);
-  
     let updatedCart;
+
     if (existingItem) {
       updatedCart = cartItems.map(item => 
         item._id === product._id ? { ...item, quantity: item.quantity + 1 } : item
@@ -34,10 +32,16 @@ function App() {
     } else {
       updatedCart = [...cartItems, { ...product, quantity: 1 }];
     }
-  
+
     setCartItems(updatedCart);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Persist to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); 
     console.log(`Product added: ${product.name}`);
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem('cartItems'); // Clear from localStorage
+    console.log('Cart cleared');
   };
 
   const carouselItems = [
@@ -58,24 +62,36 @@ function App() {
   return (
     <Router>
       <div id='navbar'>
-        <Navbar cartCount={cartItems.length} /> 
+        <Navbar cartCount={cartItems.length} />
       </div>
       <div><Background /></div>
-      <div className="carousel-container">
-        <Carousel items={carouselItems} /> 
-      </div>
       <Routes>
+        <Route path="/" element={<>
+          <h1 className='prod-title'>Trending</h1>
+          <blockquote className="quote">
+            <p>“Fashion is the armour to survive the reality of everyday life.”</p>
+            <cite>- bill cunningham</cite>
+          </blockquote>
+          <div className="carousel-container">
+            <Carousel items={carouselItems} />
+          </div>
+          <ShopPage addToCart={addToCart} />
+        </>} />
         
-        <Route path="/" element={<ShopPage addToCart={addToCart} />} /> 
-        <Route path="/register" element={<RegisterForm />} /> 
-        <Route path="/login" element={<LoginForm />} /> 
-        <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
-      </Routes>
+        <Route path="/register" element={<CarouselLayout carouselItems={carouselItems}>
+          <RegisterForm />
+        </CarouselLayout>} />
 
-      
+        <Route path="/login" element={<CarouselLayout carouselItems={carouselItems}>
+          <LoginForm />
+        </CarouselLayout>} />
+
+        <Route path="/cart" element={<CarouselLayout carouselItems={carouselItems}>
+          <CartPage cartItems={cartItems} clearCart={clearCart} />
+        </CarouselLayout>} />
+      </Routes>
     </Router>
   );
-
 }
 
 export default App;
