@@ -142,3 +142,33 @@ footer {
     color: #ff6f61; 
     text-align: center; 
 }
+.carousel {
+  width: 100%; /* Ensure carousel takes full width */
+}
+
+.carousel-item {
+  height: 600px; /* Increase height for better visibility of images */
+}
+
+.carousel-item img {
+  object-fit: contain; /* Maintain aspect ratio, filling the entire area */
+  width: 100%; /* Full width of the carousel */
+  height: 100%; /* Full height of the carousel item */
+}
+
+/* Optional: Adjust the caption height */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+  padding: 20px; /* Add some padding */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.carousel-caption h3 {
+  font-size: 2rem; /* Increase font size of the title */
+  color: #fff; /* White color for the title */
+}
+
+.carousel-caption p {
+  font-size: 1.2rem; /* Increase font size of the description */
+  color: #ddd; /* Light gray color for the description */
+}
