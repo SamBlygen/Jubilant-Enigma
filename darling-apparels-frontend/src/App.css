@@ -4,6 +4,7 @@ body {
   color: #333; 
   margin: 0;
   padding: 0;
+  
 }
 
 /* Header Styles */
@@ -182,6 +183,7 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 20px;
 }
 
 .background-overlay {
