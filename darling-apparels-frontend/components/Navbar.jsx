@@ -9,8 +9,8 @@ const Navbar = ({ cartCount }) => {
         <li><Link to="/">Shop</Link></li>
         <li><Link to="/register">Register</Link></li>
         <li><Link to="/login">Login</Link></li>
-        <li><Link to="/Sale">Sale</Link></li>
-        <li>Cart: {cartCount}</li> {/* Display cart count */}
+        <li><Link to="/cart">Cart: {cartCount}</Link></li> {/* Link to Cart page */}
+      
       </ul>
     </nav>
   );

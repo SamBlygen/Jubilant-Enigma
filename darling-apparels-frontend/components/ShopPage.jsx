@@ -35,7 +35,7 @@ const ShopPage = ({ addToCart }) => {
 
   return (
     <div className="shop-page">
-      <h1 className='prod-title'>Products</h1>
+      <h1 className='prod-title'>Trending</h1>
       <div className="product-list">
         {products.length > 0 ? (
           products.map((product) => (
