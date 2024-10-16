@@ -1,22 +1,144 @@
-.shop-container {
+body {
+  font-family: 'Arial', sans-serif; 
+  background-color: #f9f3f3; 
+  color: #333; 
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+header {
+  background-color: #ff6f61; 
+  color: white;
   padding: 20px;
-}
-
-.product-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
-}
-
-.product-card {
-  border: 1px solid #ccc;
-  padding: 15px;
-  width: 200px;
   text-align: center;
+  border-bottom: 5px solid #ff4c4c; 
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+/* Navbar Styles */
+nav {
+  background-color: #ff6f61; /* Same as header */
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ff4c4c; /* Darker coral on hover */
+}
+
+/* Product Card Styles */
+.product-card {
+  background-color: white; /* White background for cards */
+  border: 2px solid #ff6f61; /* Coral border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 15px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .product-card img {
+  max-width: 100%;
+  border-radius: 10px; /* Rounded corners for images */
+}
+
+.product-card h3 {
+  color: #ff6f61; /* Coral color for product names */
+  font-size: 1.5em;
+}
+
+.product-card p {
+  color: #666; /* Soft gray for descriptions */
+}
+
+/* Button Styles */
+button {
+  background-color: #ff6f61; /* Coral button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ff4c4c; /* Darker coral on hover */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #ff6f61; /* Coral footer */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
   width: 100%;
-  height: auto;
+}
+
+
+.navbar ul li a:hover {
+  color: #ff4c4c; 
+}
+
+.navbar ul li a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: white; 
+  transition: width 0.3s, left 0.3s; 
+}
+
+.navbar ul li a:hover::after {
+  width: 100%; 
+  left: 0; 
+}
+
+.nice-animate {
+  font-family: 'Comic Sans MS', cursive, sans-serif; 
+    font-size: 3.5em;
+    color: #ff6f61; 
+    text-align: center; 
+    margin: 20px 0; 
+    background: linear-gradient(90deg, #ff61f7, #ff4cd2); 
+    -webkit-text-fill-color: transparent; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.prod-title{
+  font-family: 'Comic Sans MS', cursive, sans-serif; 
+    font-size: 3.5em;
+    color: #ff6f61; 
+    text-align: center; 
 }

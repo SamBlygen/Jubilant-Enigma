@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import productRoutes from './server/routes/productRoutes.js';
+import userRoutes from './server/routes/userRoutes.js'
+
 
 
 dotenv.config();
@@ -16,6 +18,8 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((err)=> console.log(err))
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
+
 
 
 

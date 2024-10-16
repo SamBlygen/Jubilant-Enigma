@@ -15,7 +15,7 @@ export const getProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
     const { id } = req.params;
 
-    // Validate if the ID is a valid ObjectId
+  
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).json({ message: 'Invalid ID format' });
     }
@@ -32,7 +32,7 @@ export const getProductById = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-    const { name, description, price, category, stock, images } = req.body; // Ensure 'images' is used consistently
+    const { name, description, price, category, stock, images } = req.body; 
     try {
         const newProduct = new Product({
             name,
@@ -49,14 +49,10 @@ export const createProduct = async (req, res) => {
         res.status(500).json({ message: 'Server error creating product', error });
     }
 };
-export const seedData = async (req, res) => {
-    // Ensure 'images' is used consistently
-    //loop overr the productList
 
+export const seedData = async (req, res) => {
     let productList = [
-       
         {
-            _id: mongoose.Types.ObjectId('670e91b7b57f63dfbd696090'),
             name: "Shoes",
             price: 89,
             description: "Stylish and comfortable shoes.",
@@ -68,7 +64,6 @@ export const seedData = async (req, res) => {
             createdAt: new Date()
         },
         {
-            _id: mongoose.Types.ObjectId('670e91b7b57f63dfbd696091'),
             name: "You Boss",
             price: 75,
             description: "Stylish and trendy.",
@@ -80,7 +75,6 @@ export const seedData = async (req, res) => {
             createdAt: new Date()
         },
         {
-            _id: mongoose.Types.ObjectId('670e91b7b57f63dfbd696092'),
             name: "Fashion",
             price: 86,
             description: "Latest fashion trends.",
@@ -92,7 +86,6 @@ export const seedData = async (req, res) => {
             createdAt: new Date()
         },
         {
-            _id: mongoose.Types.ObjectId('670e91b7b57f63dfbd696093'),
             name: "Beautiful",
             price: 69,
             description: "Beautiful and elegant.",
@@ -102,26 +95,84 @@ export const seedData = async (req, res) => {
                 "https://img.staticdj.com/7ced44cefceb6400747ea2fb3cbd4873_1080x.jpeg"
             ],
             createdAt: new Date()
+        },
+        {
+            name: "Loragal",
+            price: 50,
+            description: "Brown Baddie mini.",
+            category: "Dress",
+            stock: 15,
+            images: [
+                "https://img.staticdj.com/b7787e50bab9be74abcfca3ab21937fb_750x.jpeg"
+            ],
+            createdAt: new Date()
+        },
+        {
+            name: "Summer Breeze",
+            price: 35,
+            description: "Light and airy summer dress.",
+            category: "Dress",
+            stock: 20,
+            images: [
+                "https://www.rosewe.com/images/202212/source_img/310867_P_1670560339255.jpg"
+            ],
+            createdAt: new Date()
+        },
+        {
+            name: "Classic White Tee",
+            price: 25,
+            description: "A must-have basic tee.",
+            category: "Tops",
+            stock: 50,
+            images: [
+                "https://example.com/classic-white-tee.jpg"
+            ],
+            createdAt: new Date()
+        },
+        {
+            name: "Barely Denim",
+            price: 70,
+            description: "Stylish denim jacket for all seasons.",
+            category: "Outerwear",
+            stock: 10,
+            images: [
+                "https://img.staticdj.com/40a05843008cabefab40e1ed94598257_750x.jpeg"
+            ],
+            createdAt: new Date()
+        },
+        {
+            name: "Smile",
+            price: 40,
+            description: "Comfortable and stylish sandals.",
+            category: "Footwear",
+            stock: 25,
+            images: [
+                "https://img.kwcdn.com/thumbnail/s/dc0a2ed4a985765bf48f6ca1e418e735_211aaa66a468.jpeg?imageView2/2/w/800/q/70/format/webp"
+            ],
+            createdAt: new Date()
         }
+    
     ];
 
+    try {
+       
+        for (let item of productList) {
+            const newProduct = new Product({
+                name: item.name,
+                description: item.description,
+                price: item.price,
+                category: item.category,
+                stock: item.stock,
+                images: item.images,
+                createdAt: item.createdAt
+            });
 
-    for (item of  productList){
-
-    
-        const newProduct = new Product({
-            name:item.name,
-            description,
-            price,
-            category,
-            stock,
-            images,
-        });
-
-        await newProduct.save();
- 
-    res.status(201).json({ message: 'Product successfully created', product: newProduct });
-}
+            await newProduct.save(); 
+        }
+        res.status(201).json({ message: 'Products successfully added' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error adding products', error });
+    }
 };
 
 
@@ -129,7 +180,7 @@ export const updateProduct = async (req, res) => {
     const { id } = req.params;
     const { name, description, price, category, stock, images } = req.body;
 
-    // Validate ObjectId before proceeding
+  
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).json({ message: 'Invalid ID format' });
     }

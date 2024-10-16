@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 
-const ShopPage = () => {
+const ShopPage = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ const ShopPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products'); // Adjust the API endpoint as needed
+        const response = await fetch('http://localhost:5000/api/products');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -35,11 +35,11 @@ const ShopPage = () => {
 
   return (
     <div className="shop-page">
-      <h1>Products</h1>
+      <h1 className='prod-title'>Products</h1>
       <div className="product-list">
         {products.length > 0 ? (
           products.map((product) => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard key={product._id} product={product} addToCart={addToCart} />
           ))
         ) : (
           <p>No products available.</p>
