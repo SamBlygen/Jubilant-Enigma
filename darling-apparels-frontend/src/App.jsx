@@ -16,16 +16,27 @@ import './App.css';
 function App() {
   const [cartItems, setCartItems] = useState([]); // Store cart items
 
-  const addToCart = (product) => {
-    const existingItem = cartItems.find(item => item.id === product._id);
-
-    if (existingItem) {
-      setCartItems(cartItems.map(item => 
-        item.id === product._id ? { ...item, quantity: item.quantity + 1 } : item
-      ));
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cartItems'));
+    if (storedCart) {
+      setCartItems(storedCart);
     }
+  }, []);
+
+  const addToCart = (product) => {
+    const existingItem = cartItems.find(item => item._id === product._id);
+  
+    let updatedCart;
+    if (existingItem) {
+      updatedCart = cartItems.map(item => 
+        item._id === product._id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      updatedCart = [...cartItems, { ...product, quantity: 1 }];
+    }
+  
+    setCartItems(updatedCart);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Persist to localStorage
     console.log(`Product added: ${product.name}`);
   };
 

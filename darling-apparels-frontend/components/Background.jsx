@@ -7,7 +7,7 @@ const Background = () => {
       <div className="background-overlay"></div>
       <div className="background-content">
         <h1 className='nice-animate'>Welcome to Our Store!</h1>
-        <p>Discover the latest trends and styles.</p>
+        <p>“One is never over-dressed or under-dressed with a Little Black Dress.” by Karl Lagerfeld</p>
       </div>
     </div>
   );

@@ -237,11 +237,21 @@ p {
 
 /* Animation for background movement */
 @keyframes moveBackground {
-  /* 0% {
+  0% {
     background-position: 0% 0%;
-  } */
+  }
   100% {
     background-position: 100% 100%;
   }
+
 }
 
+/* .search {
+  float: right;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+} */

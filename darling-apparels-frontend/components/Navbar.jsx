@@ -10,7 +10,7 @@ const Navbar = ({ cartCount }) => {
         <li><Link to="/register">Register</Link></li>
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/cart">Cart: {cartCount}</Link></li> {/* Link to Cart page */}
-      
+        <input className='search' type="text" placeholder="Search.."></input>
       </ul>
     </nav>
   );
