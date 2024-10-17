@@ -76,5 +76,5 @@ Uses useState, useEffect Hooks to handle cart functionality and carousel compone
 
 Things i would want to implement later 
 Payment integration for checkout.
-Implement product filtering and search functionality.
-Integrate user profile management.
+product filtering and search functionality.
+user profile management.
