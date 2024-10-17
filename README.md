@@ -24,7 +24,7 @@ User Routes: Handle POST requests for registration and login.
 Controllers
 Contain the functionality and logic for user and product interactions with MongoDB.
 
-Frontend
+Frontend - Uses Vite, React and React-Router-dom
 Consists of a component folder with 10 component files.
 
 Uses CSS for dynamic and responsive styling.
@@ -74,4 +74,7 @@ App.jsx
 Renders all components and manages navigation with Router, Routes, and Route.
 Uses useState, useEffect Hooks to handle cart functionality and carousel component.
 
-
+Things i would want to implement later 
+Payment integration for checkout.
+Implement product filtering and search functionality.
+Integrate user profile management.
