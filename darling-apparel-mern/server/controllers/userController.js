@@ -1,4 +1,3 @@
-
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 
@@ -16,9 +15,9 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
- 
+
     user = await User.create({ name, email, password });
-    
+
 
     const token = generateToken(user._id);
     res.status(201).json({ 
@@ -67,3 +66,4 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
