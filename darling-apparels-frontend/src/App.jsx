@@ -9,6 +9,7 @@ import CartPage from '../components/CartPage.jsx';
 import Carousel from '../components/Carousel.jsx';
 import Background from '../components/Background.jsx';
 import CarouselLayout from '../components/CarouselLayout.jsx';
+import Footer from '../components/Footer.jsx';
 import './App.css';
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
           <CartPage cartItems={cartItems} clearCart={clearCart} />
         </CarouselLayout>} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }

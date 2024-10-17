@@ -130,17 +130,6 @@ button:hover {
   background-color: #ff4c4c; /* Darker coral on hover */
 }
 
-/* Footer Styles */
-footer {
-  background-color: #ff6f61; /* Coral footer */
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
 
 .nice-animate {
   font-size: 3.5em;
@@ -478,4 +467,35 @@ footer {
   text-align: center;
   font-size: 2em;
   margin: 20px 0;
+}
+.footer {
+  background-color: #ff6f61; /* Coral background to match theme */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-content h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  font-size: 1.2em;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: white;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ff4c4c; /* Darker coral on hover */
 }
