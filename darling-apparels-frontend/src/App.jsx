@@ -67,11 +67,9 @@ function App() {
       <div><Background /></div>
       <Routes>
         <Route path="/" element={<>
-          <h1 className='prod-title'>Trending</h1>
-          <blockquote className="quote">
-            <p>“Fashion is the armour to survive the reality of everyday life.”</p>
-            <cite>- bill cunningham</cite>
-          </blockquote>
+          <h1 className='nice-animate'>Welcome to Our Store!</h1>
+        <p className='centered-text'>Inspire. Create. Believe.</p>
+        <p className='centered-text'>“One is never over-dressed or under-dressed with a Little Black Dress.” - Karl Lagerfeld</p>
           <div className="carousel-container">
             <Carousel items={carouselItems} />
           </div>
